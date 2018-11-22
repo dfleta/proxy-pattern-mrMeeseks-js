@@ -1,5 +1,7 @@
 
-
+/**
+ * Clase Mr Meeseeks
+ */
 
 function MrMeeseeks() {
     this.id = "the one";
@@ -7,7 +9,7 @@ function MrMeeseeks() {
 
 MrMeeseeks.prototype.toString = function() {
     return this.id;
-}
+};
 
 /**
  * clase Box
@@ -20,13 +22,13 @@ function Box() {
 Box.prototype.createMrMeeseeks = function() {
     let prototipo = new MrMeeseeks();
     return Object.create(prototipo);
-}
+};
 
 Box.prototype.pushButton = function(reality) {
     reality.push(this.createMrMeeseeks());
-}
+};
 
-// singleton
+// singleton de Box
 function getBox() {
     
     let boxInstance = new Box();
@@ -35,7 +37,7 @@ function getBox() {
         get :function get() {
             return boxInstance;
         }
-    }
+    };
 }
 
 /**
@@ -45,7 +47,7 @@ function getBox() {
 // node.js modules
 exports.singletonBox = function() {
     return getBox();
-}
+};
 
 
 
