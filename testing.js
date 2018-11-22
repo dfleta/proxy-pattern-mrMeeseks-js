@@ -2,5 +2,10 @@
 // node.js modules
 var importaBox = require('./box');
 
-console.log(importaBox.singletonBox().get().name);
+var box = importaBox.singletonBox().get();
+console.log(box.name);
+
+var box2 = importaBox.singletonBox().get();
+console.log(box2.name);
+
 

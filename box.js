@@ -1,7 +1,7 @@
 
 
 function Box() {
-    this.name = "caja magica";
+    this.name = "Rick's box";
 
 }
 
@@ -21,6 +21,7 @@ function getBox() {
  * Testing
  */
 
+// node.js modules
 exports.singletonBox = function() {
     return getBox();
 }
