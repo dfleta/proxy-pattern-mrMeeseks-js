@@ -12,7 +12,7 @@ MrMeeseeks.prototype.speak = function() {
 };
 
 // singleton de MrMeeseeks
-
+// static
 MrMeeseeks.singleton = function() {
 
     let prototipo = new MrMeeseeks();
