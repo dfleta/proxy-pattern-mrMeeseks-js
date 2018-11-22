@@ -7,9 +7,23 @@ function MrMeeseeks() {
     this.message = "I'm Mr Meeseeks! Look at meeee!";
 }
 
-MrMeeseeks.prototype.toString = function() {
+MrMeeseeks.prototype.speak = function() {
     return this.message;
 };
+
+// singleton de MrMeeseeks
+
+MrMeeseeks.singleton = function() {
+
+    let prototipo = new MrMeeseeks();
+
+    return {
+        get : function() {
+            return Object.create(prototipo);
+        }
+    };
+};
+
 
 /**
  * clase Box
@@ -20,8 +34,7 @@ function Box() {
 }
 
 Box.prototype.createMrMeeseeks = function() {
-    let prototipo = new MrMeeseeks();
-    return Object.create(prototipo);
+    return Object.create(MrMeeseeks.singleton().get());
 };
 
 Box.prototype.pushButton = function(reality) {
@@ -31,7 +44,7 @@ Box.prototype.pushButton = function(reality) {
 // singleton de Box
 function getBox() {
     
-    let boxInstance = new Box();
+    const boxInstance = new Box();
 
     return { 
         get :function get() {
@@ -40,14 +53,20 @@ function getBox() {
     };
 }
 
+
 /**
  * Testing
  */
+
 
 // node.js modules
 exports.singletonBox = function() {
     return getBox();
 };
+
+
+
+
 
 
 
