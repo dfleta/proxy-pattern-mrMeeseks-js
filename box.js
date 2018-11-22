@@ -4,11 +4,11 @@
  */
 
 function MrMeeseeks() {
-    this.id = "the one";
+    this.message = "I'm Mr Meeseeks! Look at meeee!";
 }
 
 MrMeeseeks.prototype.toString = function() {
-    return this.id;
+    return this.message;
 };
 
 /**
