@@ -25,12 +25,12 @@ MrMeeseeks.prototype.fulfillRequest = function() {
 
 MrMeeseeks.prototype.listenRequest = function(deseo, sobre) {
     let closure = function() {
-                        let objeto = sobre;
                         function execute() {
-                            return deseo + " " + objeto;
+                            return deseo + " " + sobre;
                         }
                         return execute;
                     };
+    // al unificar formulateRequest sobre la variable closure
     this.accion = closure(); 
 };
 
