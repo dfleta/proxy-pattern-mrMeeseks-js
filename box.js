@@ -1,6 +1,8 @@
 
 /**
  * Clase Mr Meeseeks
+ * 
+ * https://www.youtube.com/watch?v=qUYvIAP3qQk
  */
 
 function MrMeeseeks() {
@@ -18,7 +20,7 @@ MrMeeseeks.prototype.formulateRequest = function(deseo, objeto) {
 
 MrMeeseeks.prototype.fulfillRequest = function() {
     console.log("Yes sireeee!!");
-    console.log(this.accion() + " done!!");
+    console.log(this.accion() + " All done!!");
 };
 
 MrMeeseeks.prototype.listenRequest = function(deseo, sobre) {

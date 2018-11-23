@@ -72,8 +72,7 @@ box.pushButton(reality);
 console.assert(reality.length == 1);
 
 console.log("Summer: I wanna be popular at school!");
-reality[lastMrMeeseeks].listenRequest("bePopular", "at school");
-
+reality[lastMrMeeseeks].listenRequest("be_popular", "at school");
 
 /*
 reality[lastMrMeeseeks].formulateRequest(
@@ -83,6 +82,17 @@ reality[lastMrMeeseeks].formulateRequest(
 reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
+
+
+box.pushButton(reality);
+console.log("Beth: I wanna be a more complete woman!");
+reality[lastMrMeeseeks].listenRequest("be_a_more_complete", "woman");
+reality[lastMrMeeseeks].fulfillRequest();
+reality.pop();
+console.assert(reality.length == 0);
+
+// el prototipo no se ha visto alterado con accion
+// proto.fulfillRequest();  => accion no definido
 
 /*
 for(let mrMee in reality) {
