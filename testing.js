@@ -53,7 +53,7 @@ console.log(deseo());
 */
 
 var lastMrMeeseeks = reality.length - 1;
-reality[lastMrMeeseeks].formulateRequest(
+reality[lastMrMeeseeks].makeRequest(
                             function open(object) {
                                 // let local = object;
                                 function execute() {
@@ -72,21 +72,21 @@ box.pushButton(reality);
 console.assert(reality.length == 1);
 
 console.log("Summer: I wanna be popular at school!");
-reality[lastMrMeeseeks].listenRequest("be_popular", "at school");
+reality[lastMrMeeseeks].makeRequest("be_popular", "at school");
 
 /*
-reality[lastMrMeeseeks].formulateRequest(
+reality[lastMrMeeseeks].makeRequest(
                             eval("function deseo(objeto) { let local = objeto; function execute() {return deseo objeto;} return execute;}"),        
                             objeto);*/
 
-reality[lastMrMeeseeks].fulfillRequest();
+reality[lastMrMeeseeks].makeRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
 
 box.pushButton(reality);
 console.log("Beth: I wanna be a more complete woman!");
-reality[lastMrMeeseeks].listenRequest("be_a_more_complete", "woman");
+reality[lastMrMeeseeks].makeRequest("be_a_more_complete", "woman");
 reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);

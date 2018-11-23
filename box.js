@@ -14,8 +14,14 @@ MrMeeseeks.prototype.speak = function() {
     console.log(this.message);
 };
 
-MrMeeseeks.prototype.formulateRequest = function(deseo, objeto) {
-    this.accion = deseo(objeto);
+MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
+    let closure = function(cosa) {
+        function execute() {
+            return deseo + " " + cosa;
+        }
+        return execute;
+    };
+    this.accion = closure(objeto);
 };
 
 MrMeeseeks.prototype.fulfillRequest = function() {
@@ -23,16 +29,6 @@ MrMeeseeks.prototype.fulfillRequest = function() {
     console.log(this.accion() + " All done!!");
 };
 
-MrMeeseeks.prototype.listenRequest = function(deseo, objeto) {
-    let closure = function(cosa) {
-                        function execute() {
-                            return deseo + " " + cosa;
-                        }
-                        return execute;
-                    };
-    // al unificar formulateRequest sobra la variable closure
-    this.accion = closure(objeto);
-};
 
 // singleton de MrMeeseeks
 function singletonMrMeeseeks() {
