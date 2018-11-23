@@ -23,15 +23,15 @@ MrMeeseeks.prototype.fulfillRequest = function() {
     console.log(this.accion() + " All done!!");
 };
 
-MrMeeseeks.prototype.listenRequest = function(deseo, sobre) {
-    let closure = function() {
+MrMeeseeks.prototype.listenRequest = function(deseo, objeto) {
+    let closure = function(cosa) {
                         function execute() {
-                            return deseo + " " + sobre;
+                            return deseo + " " + cosa;
                         }
                         return execute;
                     };
-    // al unificar formulateRequest sobre la variable closure
-    this.accion = closure(); 
+    // al unificar formulateRequest sobra la variable closure
+    this.accion = closure(objeto);
 };
 
 // singleton de MrMeeseeks
