@@ -29,57 +29,28 @@ console.assert(mrMeeseeks !== mrMeeseeks2);
 console.assert(mrMeeseeks.message != mrMeeseeks2.message);
 
 var proto = box.getProtoMeeseks();
-console.assert(proto.message == "I'm Mr Meeseeks! Look at meeee!");
+console.assert(proto.messageOnCreate == "I'm Mr Meeseeks! Look at meeee!");
 
 // creamos Mr Meeseeks con la caja
 var reality = [];
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
-
 console.log("Rick: Open Jerry's stupid mayonnaise jar");
-
-/*
-var accion = function open(object) {
-    let local = object;
-    function execute() {
-            return "open " + object;
-    }
-    return execute;
-};
-
-var deseo = accion("tarro");
-console.log(deseo());
-*/
-
 var lastMrMeeseeks = reality.length - 1;
-reality[lastMrMeeseeks].makeRequest(
-                            function open(object) {
-                                // let local = object;
-                                function execute() {
-                                        return "open " + object;
-                                }
-                                return execute;
-                            },        
-                            "Jerry's stupid mayonnaise jar");
-
+reality[lastMrMeeseeks].makeRequest("open", "Jerry's stupid mayonnaise jar");
 reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
+// si cambiamos el mensaje al crearse del prototipo, cambian todos los meeseeks
+proto.messageOnCreate = "Caaaaaan dooooooo!!";
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
-
 console.log("Summer: I wanna be popular at school!");
 reality[lastMrMeeseeks].makeRequest("be_popular", "at school");
-
-/*
-reality[lastMrMeeseeks].makeRequest(
-                            eval("function deseo(objeto) { let local = objeto; function execute() {return deseo objeto;} return execute;}"),        
-                            objeto);*/
-
-reality[lastMrMeeseeks].makeRequest();
+reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 

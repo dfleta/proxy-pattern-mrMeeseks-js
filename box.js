@@ -6,12 +6,16 @@
  */
 
 function MrMeeseeks() {
-    this.message = "I'm Mr Meeseeks! Look at meeee!";
+    this.messageOnCreate = "I'm Mr Meeseeks! Look at meeee!";
     // this.speak();
+    this.messageOnRequest = ["Oooh yeah! Can do!", 
+                             "Yes sireee!" , 
+                             "Oh, yeah!, Yes, ma'am!"];
+
 }
 
 MrMeeseeks.prototype.speak = function() {
-    console.log(this.message);
+    console.log(this.messageOnCreate);
 };
 
 MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
@@ -22,10 +26,10 @@ MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
         return execute;
     };
     this.accion = closure(objeto);
+    console.log(this.messageOnRequest[Math.floor(Math.random() * (this.messageOnRequest.length))]);
 };
 
 MrMeeseeks.prototype.fulfillRequest = function() {
-    console.log("Yes sireeee!!");
     console.log(this.accion() + " All done!!");
 };
 
