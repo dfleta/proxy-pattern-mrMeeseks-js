@@ -18,6 +18,10 @@ MrMeeseeks.prototype.speak = function() {
     console.log(this.messageOnCreate);
 };
 
+MrMeeseeks.prototype.speakOnRequest = function() {
+    console.log(this.messageOnRequest[Math.floor(Math.random() * this.messageOnRequest.length)]);
+}
+
 MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
     let closure = function(cosa) {
         function execute() {
@@ -26,7 +30,7 @@ MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
         return execute;
     };
     this.accion = closure(objeto);
-    console.log(this.messageOnRequest[Math.floor(Math.random() * (this.messageOnRequest.length))]);
+    this.speakOnRequest();
 };
 
 MrMeeseeks.prototype.fulfillRequest = function() {
