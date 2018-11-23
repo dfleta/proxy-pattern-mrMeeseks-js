@@ -12,6 +12,15 @@ MrMeeseeks.prototype.speak = function() {
     console.log(this.message);
 };
 
+MrMeeseeks.prototype.formulateRequest = function(action, objeto) {
+    this.accion = action(objeto);
+}
+
+MrMeeseeks.prototype.fulfillRequest = function() {
+    console.log("Yes sireeee!!");
+    console.log(this.accion() + " !!");
+}
+
 // singleton de MrMeeseeks
 function singletonMrMeeseeks() {
 
