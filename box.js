@@ -59,7 +59,7 @@ Box.prototype.createMrMeeseeks = function() {
     return Object.create(this.mrMeeseeks);
 };
 
-Box.prototype.pushButton = function(reality) {
+Box.prototype.pressButton = function(reality) {
     let mrMee = this.createMrMeeseeks();
     mrMee.speak();
     reality.push(mrMee);

@@ -34,7 +34,7 @@ console.assert(proto.message == "I'm Mr Meeseeks! Look at meeee!");
 // creamos Mr Meeseeks con la caja
 var reality = [];
 
-box.pushButton(reality);
+box.pressButton(reality);
 console.assert(reality.length == 1);
 
 console.log("Rick: Open Jerry's stupid mayonnaise jar");
@@ -68,7 +68,7 @@ reality.pop();
 console.assert(reality.length == 0);
 
 
-box.pushButton(reality);
+box.pressButton(reality);
 console.assert(reality.length == 1);
 
 console.log("Summer: I wanna be popular at school!");
@@ -84,7 +84,7 @@ reality.pop();
 console.assert(reality.length == 0);
 
 
-box.pushButton(reality);
+box.pressButton(reality);
 console.log("Beth: I wanna be a more complete woman!");
 reality[lastMrMeeseeks].makeRequest("be_a_more_complete", "woman");
 reality[lastMrMeeseeks].fulfillRequest();
