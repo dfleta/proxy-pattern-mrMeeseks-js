@@ -5,7 +5,7 @@
 
 function MrMeeseeks() {
     this.message = "I'm Mr Meeseeks! Look at meeee!";
-    this.speak();
+    // this.speak();
 }
 
 MrMeeseeks.prototype.speak = function() {
@@ -42,7 +42,9 @@ Box.prototype.createMrMeeseeks = function() {
 };
 
 Box.prototype.pushButton = function(reality) {
-    reality.push(this.createMrMeeseeks());
+    let mrMee = this.createMrMeeseeks();
+    mrMee.speak();
+    reality.push(mrMee);
 };
 
 Box.prototype.getProtoMeeseks = function() {
