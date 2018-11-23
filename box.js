@@ -14,7 +14,7 @@ function MrMeeseeks() {
 
 }
 
-MrMeeseeks.prototype.speak = function() {
+MrMeeseeks.prototype.speakOnCreate = function() {
     console.log(this.messageOnCreate);
 };
 
@@ -69,7 +69,7 @@ Box.prototype.createMrMeeseeks = function() {
 
 Box.prototype.pressButton = function(reality) {
     let mrMee = this.createMrMeeseeks();
-    mrMee.speak();
+    mrMee.speakOnCreate();
     reality.push(mrMee);
 };
 
