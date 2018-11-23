@@ -5,24 +5,24 @@
 
 function MrMeeseeks() {
     this.message = "I'm Mr Meeseeks! Look at meeee!";
+    this.speak();
 }
 
 MrMeeseeks.prototype.speak = function() {
-    return this.message;
+    console.log(this.message);
 };
 
 // singleton de MrMeeseeks
-// static
-MrMeeseeks.singleton = function() {
+function singletonMrMeeseeks() {
 
-    let prototipo = new MrMeeseeks();
+    const prototipo = new MrMeeseeks();
 
     return {
-        get : function() {
-            return Object.create(prototipo);
+        get: function() {
+            return prototipo;
         }
     };
-};
+}
 
 
 /**
@@ -31,14 +31,22 @@ MrMeeseeks.singleton = function() {
 
 function Box() {
     this.name = "Rick's box";
+    this.mrMeeseeks = null;
 }
 
 Box.prototype.createMrMeeseeks = function() {
-    return Object.create(MrMeeseeks.singleton().get());
+    if (! this.mrMeeseeks) {
+        this.mrMeeseeks = singletonMrMeeseeks().get();
+    }
+    return Object.create(this.mrMeeseeks);
 };
 
 Box.prototype.pushButton = function(reality) {
     reality.push(this.createMrMeeseeks());
+};
+
+Box.prototype.getProtoMeeseks = function() {
+    return this.mrMeeseeks;
 };
 
 // singleton de Box
@@ -63,9 +71,6 @@ function getBox() {
 exports.singletonBox = function() {
     return getBox();
 };
-
-
-
 
 
 

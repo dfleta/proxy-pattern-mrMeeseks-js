@@ -19,21 +19,26 @@ console.log(box.name);
 // creamos dos Meeseeks
 // los Meeseeks son distintos
 var mrMeeseeks = box.createMrMeeseeks();
-console.log(mrMeeseeks.speak());
+// console.log(mrMeeseeks.speak());
 
 var mrMeeseeks2 = box.createMrMeeseeks();
 mrMeeseeks2.message = "el segundo";
-console.log(mrMeeseeks.speak());
+// console.log(mrMeeseeks.speak());
 console.assert(mrMeeseeks !== mrMeeseeks2);
+
+var proto = box.getProtoMeeseks();
+console.assert(proto.message == "I'm Mr Meeseeks! Look at meeee!");
 
 // creamos Mr Meeseeks con la caja
 var reality = [];
 box.pushButton(reality);
 box.pushButton(reality);
 console.assert(reality.length == 2);
+/*
 for(let mrMee in reality) {
     console.log(reality[mrMee].speak());
-}
+}*/
+
 
 
 
