@@ -55,7 +55,7 @@ console.log(deseo());
 var lastMrMeeseeks = reality.length - 1;
 reality[lastMrMeeseeks].formulateRequest(
                             function open(object) {
-                                let local = object;
+                                // let local = object;
                                 function execute() {
                                         return "open " + object;
                                 }
@@ -64,10 +64,26 @@ reality[lastMrMeeseeks].formulateRequest(
                             "Jerry's stupid mayonnaise jar");
 
 reality[lastMrMeeseeks].fulfillRequest();
+reality.pop();
+console.assert(reality.length == 0);
+
+
+box.pushButton(reality);
+console.assert(reality.length == 1);
+
+console.log("Summer: I wanna be popular at school!");
+reality[lastMrMeeseeks].listenRequest("bePopular", "at school");
+
 
 /*
-box.pushButton(reality);
-console.assert(reality.length == 2);*/
+reality[lastMrMeeseeks].formulateRequest(
+                            eval("function deseo(objeto) { let local = objeto; function execute() {return deseo objeto;} return execute;}"),        
+                            objeto);*/
+
+reality[lastMrMeeseeks].fulfillRequest();
+reality.pop();
+console.assert(reality.length == 0);
+
 /*
 for(let mrMee in reality) {
     reality[mrMee].speak();

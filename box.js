@@ -12,14 +12,25 @@ MrMeeseeks.prototype.speak = function() {
     console.log(this.message);
 };
 
-MrMeeseeks.prototype.formulateRequest = function(action, objeto) {
-    this.accion = action(objeto);
-}
+MrMeeseeks.prototype.formulateRequest = function(deseo, objeto) {
+    this.accion = deseo(objeto);
+};
 
 MrMeeseeks.prototype.fulfillRequest = function() {
     console.log("Yes sireeee!!");
-    console.log(this.accion() + " !!");
-}
+    console.log(this.accion() + " done!!");
+};
+
+MrMeeseeks.prototype.listenRequest = function(deseo, sobre) {
+    let closure = function() {
+                        let objeto = sobre;
+                        function execute() {
+                            return deseo + " " + objeto;
+                        }
+                        return execute;
+                    };
+    this.accion = closure(); 
+};
 
 // singleton de MrMeeseeks
 function singletonMrMeeseeks() {
