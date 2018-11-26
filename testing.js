@@ -10,10 +10,10 @@ var importaBox = require('./box');
 
 // creamos dos cajas: es la misma por singleton
 var factoriaBox = importaBox.singletonBox();
-var box = factoriaBox.get();
+var box = factoriaBox.getBox();
 console.log(box.name);
 
-var box2 = factoriaBox.get();
+var box2 = factoriaBox.getBox();
 console.log(box2.name);
 
 //  las cajas son la misma

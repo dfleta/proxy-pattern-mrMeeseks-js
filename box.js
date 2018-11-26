@@ -80,12 +80,12 @@ Box.prototype.getProtoMeeseks = function() {
 };
 
 // singleton de Box
-function getBox() {
+function singleBox() {
     
     const boxInstance = new Box();
 
     return { 
-        get :function get() {
+        getBox :function getBox() {
             return boxInstance;
         }
     };
@@ -99,7 +99,7 @@ function getBox() {
 
 // node.js modules
 exports.singletonBox = function() {
-    return getBox();
+    return singleBox();
 };
 
 
