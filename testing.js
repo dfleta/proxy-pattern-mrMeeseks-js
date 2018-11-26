@@ -97,7 +97,8 @@ reality[lastMrMeeseeks].makeRequest("take two strokes off", "my golf game");
 Object.getPrototypeOf(reality[lastMrMeeseeks]).messageOnCreate = "Hi!!";
 
 // Mr Meeseeks creando meeseeks
-for(let i = 1; i <= 3; i++) {
+let meeseeksNum = 3;
+for(let i = 1; i <= meeseeksNum; i++) {
     box.pressButton(reality);
     console.log("Mr Meeseeks: Could you help me get two strokes off Jerry's golf swim?");
     // si añadimos accion() con makeRequest, la creamos de manera local en el objeto
@@ -108,7 +109,7 @@ for(let i = 1; i <= 3; i++) {
     // reality[i].makeRequest("take two strokes off", "my golf game");
 }
 
-console.assert(reality.length == 4);
+console.assert(reality.length == meeseeksNum + 1);
 
 // aprendiendo draw
 
@@ -131,8 +132,8 @@ Object.getPrototypeOf(reality[0]).learnRequest(
 // todos los meeseeks menos uno dejan de existir
 // selecciono todos los elementos del array menos el primero
 // slice(start, end) => slice(0, -1) => desde el primero hasta el ultimo sin incluir
-let meseeksNum = reality.slice(0,-1).length;
-for(let i = 0; i < meseeksNum; i++) {
+let meseeksToExplode = reality.slice(0,-1).length;
+for(let i = 0; i < meseeksToExplode; i++) {
     // el primer meeseeks creado por jerry es el que primero explota
     // for/in no devuelve el array en el orden en el que fue creado
     reality.shift().fulfillRequest();
