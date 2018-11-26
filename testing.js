@@ -43,6 +43,7 @@ console.assert(proto != mrMeeseeks);
 var reality = [];
 
 // Historia de usuario: Jerry press button
+console.log("\n ### Jerry press button ### \n");
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
@@ -59,21 +60,23 @@ console.assert(reality.length == 0);
 // cambia el de todos los meeseeks
 proto.messageOnCreate = "Caaaaaan dooooooo!!";
 
-// // Historia de usuario: Summer press button
+// Historia de usuario: Summer press button
+console.log("\n ### Summer press button ### \n");
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
 console.log("Summer: I wanna be popular at school!");
-reality[lastMrMeeseeks].makeRequest("be_popular", "at school");
+reality[lastMrMeeseeks].makeRequest("be popular", "at school");
 reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
 // // Historia de usuario: Beth press button
+console.log("\n ### Beth press button ### \n");
 
 box.pressButton(reality);
 console.log("Beth: I wanna be a more complete woman!");
-reality[lastMrMeeseeks].makeRequest("be_a_more_complete", "woman");
+reality[lastMrMeeseeks].makeRequest("be a more complete", "woman");
 reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
