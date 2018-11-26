@@ -56,10 +56,6 @@ reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
-// si cambiamos el "mensaje al crearse" del prototipo, 
-// cambia el de todos los meeseeks
-proto.messageOnCreate = "Caaaaaan dooooooo!!";
-
 // Historia de usuario: Summer press button
 console.log("\n ### Summer press button ### \n");
 
@@ -84,32 +80,68 @@ console.assert(reality.length == 0);
 // el prototipo no se ha visto alterado con accion
 // proto.fulfillRequest();  => accion no definido
 
+
 // // Historia de usuario: Jerry y su Mr Meeseeks press button
 console.log("\n ### Jerry and Mr Meeseeks press button ### \n");
 
 box.pressButton(reality);
+console.assert(reality.length == 1);
+
 console.log("Jerry: I would like to take two strokes off my golf game.");
+
 reality[lastMrMeeseeks].makeRequest("take two strokes off", "my golf game");
+
+// si cambiamos el "mensaje al crearse" del prototipo, 
+// cambia el de todos los meeseeks
+// proto.messageOnCreate = "Caaaaaan dooooooo!!";
+Object.getPrototypeOf(reality[lastMrMeeseeks]).messageOnCreate = "Hi!!";
+
+// Mr Meeseeks creando meeseeks
+for(let i = 1; i <= 3; i++) {
+    box.pressButton(reality);
+    console.log("Mr Meeseeks: Could you help me get two strokes off Jerry's golf swim?");
+    // si añadimos accion() con makeRequest, la creamos de manera local en el objeto
+    // asi que aunque añadamos accion() mediante learnRequest en el prototipo
+    // JS encontrara accion() de make en el espacio de nombres local
+    // y no la accion() creada en el prototipo (precedencia resolucion nombres)
+    // reality[i].makeRequest("take two strokes off", "my golf game");
+}
+
+console.assert(reality.length == 4);
 
 // aprendiendo draw
 
 // Array-Like Objects
 var cazo = {};
 
-reality[lastMrMeeseeks].learnRequest(
-                            function draw(objeto) {
-                                function execute() {
-                                        objeto["bola"] = "";
-                                        return "bola" in objeto? 
-                                                    "That's a lower handycap stroke!!" :
-                                                     "I wanna die!!!";
-                                }
-                                // la ejecucion de la accion se aplaza hasta que sea invocada
-                                return execute;
-                            },        
-                            cazo);
+Object.getPrototypeOf(reality[0]).learnRequest(
+                                    function draw(objeto) {
+                                        function execute() {
+                                                objeto["bola"] = "";
+                                                return "bola" in objeto? 
+                                                            "That's a lower handycap stroke!!" :
+                                                            "I wanna die!!!";
+                                        }
+                                        // la ejecucion de la accion se aplaza hasta que sea invocada
+                                        return execute;
+                                    },        
+                                    cazo);
 
-reality[lastMrMeeseeks].fulfillRequest();
+// todos los meeseeks menos uno dejan de existir
+// selecciono todos los elementos del array menos el primero
+// slice(start, end) => slice(1) => desde el segundo hasta el final
+for(let i = 1; i < reality.length; i++) {
+    reality[i].fulfillRequest();
+}
+
+let limite = reality.length;
+for(let i = 1; i < limite; i++) {
+    // el primer meeseeks creado por jerry es el que primero explota
+    reality.shift();
+}
+
+console.assert(reality.length == 1);
+
 
 // aprendiendo short game
 console.log("\nMr Meeseeks with a knife: What about your short game?");
@@ -117,12 +149,12 @@ console.log("\nMr Meeseeks with a knife: What about your short game?");
 // Array-Like Objects
 var taza = {};
 
-reality[lastMrMeeseeks].learnRequest(
+reality[0].learnRequest(
                             function putt(objeto) {
                                 function execute() {
                                         // notacion dot tambien funciona
                                         objeto.bola = "";
-                                        return "otro" in objeto? 
+                                        return "onio" in objeto? 
                                                     "Ohh, nice!!" :
                                                     "Samantha is gona die!!!";
                                 }
@@ -135,7 +167,4 @@ reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
-/*
-for(let mrMee in reality) {
-    reality[mrMee].speak();
-}*/
+
