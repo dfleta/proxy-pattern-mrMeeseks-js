@@ -104,6 +104,7 @@ for(let i = 1; i <= 3; i++) {
     // asi que aunque añadamos accion() mediante learnRequest en el prototipo
     // JS encontrara accion() de make en el espacio de nombres local
     // y no la accion() creada en el prototipo (precedencia resolucion nombres)
+
     // reality[i].makeRequest("take two strokes off", "my golf game");
 }
 
@@ -112,31 +113,32 @@ console.assert(reality.length == 4);
 // aprendiendo draw
 
 // Array-Like Objects
-var cazo = {};
+var olla = {};
 
 Object.getPrototypeOf(reality[0]).learnRequest(
                                     function draw(objeto) {
                                         function execute() {
-                                                objeto["bola"] = "";
-                                                return "bola" in objeto? 
+                                                objeto["tomato"] = "";
+                                                return "tomato" in objeto? 
                                                             "That's a lower handycap stroke!!" :
                                                             "I wanna die!!!";
                                         }
                                         // la ejecucion de la accion se aplaza hasta que sea invocada
                                         return execute;
                                     },        
-                                    cazo);
+                                    olla);
 
 // todos los meeseeks menos uno dejan de existir
 // selecciono todos los elementos del array menos el primero
-// slice(start, end) => slice(1) => desde el segundo hasta el final
-for(let i = 1; i < reality.length; i++) {
+// slice(start, end) => slice(0, -1) => desde el primero hasta el ultimo sin incluir
+for(let i = 0; i < reality.slice(0,-1).length; i++) {
     reality[i].fulfillRequest();
 }
 
 let limite = reality.length;
 for(let i = 1; i < limite; i++) {
     // el primer meeseeks creado por jerry es el que primero explota
+    // for/in no devuelve el array en el orden en el que fue creado:
     reality.shift();
 }
 
@@ -147,20 +149,19 @@ console.assert(reality.length == 1);
 console.log("\nMr Meeseeks with a knife: What about your short game?");
 
 // Array-Like Objects
-var taza = {};
+var cazo = {};
 
-reality[0].learnRequest(
-                            function putt(objeto) {
-                                function execute() {
-                                        // notacion dot tambien funciona
-                                        objeto.bola = "";
-                                        return "onio" in objeto? 
-                                                    "Ohh, nice!!" :
-                                                    "Samantha is gona die!!!";
-                                }
-                                return execute;
+reality[0].learnRequest(function putt(objeto) {
+                            function execute() {
+                                    // notacion dot tambien funciona
+                                    objeto.onion = "";
+                                    return "onion" in objeto? 
+                                                "Ohh, nice!!" :
+                                                "Samantha is gona die!!!";
+                            }
+                            return execute;
                             },        
-                            taza);
+                        cazo);
 
 reality[lastMrMeeseeks].fulfillRequest();
 
