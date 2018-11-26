@@ -2,6 +2,8 @@
 /**
  * Clase Mr Meeseeks
  * 
+ * Las historias de usuario a programar
+ * se encuentran aqui: 
  * https://www.youtube.com/watch?v=qUYvIAP3qQk
  */
 
@@ -20,7 +22,7 @@ MrMeeseeks.prototype.speakOnCreate = function() {
 
 MrMeeseeks.prototype.speakOnRequest = function() {
     console.log(this.messageOnRequest[Math.floor(Math.random() * this.messageOnRequest.length)]);
-}
+};
 
 MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
     let closure = function(cosa) {

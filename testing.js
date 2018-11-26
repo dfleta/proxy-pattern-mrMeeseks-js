@@ -1,5 +1,7 @@
 
 /**
+ * Las historias de usuario a programar
+ * se encuentran aqui:
  * https://www.youtube.com/watch?v=qUYvIAP3qQk
  */
 
