@@ -104,6 +104,7 @@ reality[lastMrMeeseeks].learnRequest(
                                                     "That's a lower handycap stroke!!" :
                                                      "I wanna die!!!";
                                 }
+                                // la ejecucion de la accion se aplaza hasta que sea invocada
                                 return execute;
                             },        
                             cazo);
@@ -111,7 +112,7 @@ reality[lastMrMeeseeks].learnRequest(
 reality[lastMrMeeseeks].fulfillRequest();
 
 // aprendiendo short game
-console.log("Mr Meeseeks with a knife: What about your short game?");
+console.log("\nMr Meeseeks with a knife: What about your short game?");
 
 // Array-Like Objects
 var taza = {};
