@@ -93,14 +93,46 @@ reality[lastMrMeeseeks].makeRequest("take two strokes off", "my golf game");
 
 // aprendiendo draw
 
+// Array-Like Objects
+var cazo = {};
+
+reality[lastMrMeeseeks].learnRequest(
+                            function draw(objeto) {
+                                function execute() {
+                                        objeto["bola"] = "";
+                                        return "bola" in objeto? 
+                                                    "That's a lower handycap stroke!!" :
+                                                     "I wanna die!!!";
+                                }
+                                return execute;
+                            },        
+                            cazo);
+
+reality[lastMrMeeseeks].fulfillRequest();
 
 // aprendiendo short game
+console.log("Mr Meeseeks with a knife: What about your short game?");
 
-reality[lastMrMeeseeks].learnRequest();
+// Array-Like Objects
+var taza = {};
+
+reality[lastMrMeeseeks].learnRequest(
+                            function putt(objeto) {
+                                function execute() {
+                                        // notacion dot tambien funciona
+                                        objeto.bola = "";
+                                        return "otro" in objeto? 
+                                                    "Ohh, nice!!" :
+                                                    "Samantha is gona die!!!";
+                                }
+                                return execute;
+                            },        
+                            taza);
+
 reality[lastMrMeeseeks].fulfillRequest();
+
 reality.pop();
 console.assert(reality.length == 0);
-
 
 /*
 for(let mrMee in reality) {

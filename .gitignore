@@ -44,6 +44,7 @@ bower_components
 !.vscode/tasks.json
 .vscode/launch.json
 !.vscode/extensions.json
+.sounds
 
 # misc
 .sass-cache
@@ -89,3 +90,4 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
+sounds/zapsplat_foley_bottles_glass_milk_empty_knock_over_24356.mp3
