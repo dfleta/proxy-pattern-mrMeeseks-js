@@ -9,11 +9,9 @@
 
 function MrMeeseeks() {
     this.messageOnCreate = "I'm Mr Meeseeks! Look at meeee!";
-    // this.speak();
     this.messageOnRequest = ["Oooh yeah! Can do!", 
                              "Yes sireee!" , 
                              "Oh, yeah!, Yes, ma'am!"];
-
 }
 
 MrMeeseeks.prototype.speakOnCreate = function() {
