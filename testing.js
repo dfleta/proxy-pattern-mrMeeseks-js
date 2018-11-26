@@ -131,17 +131,12 @@ Object.getPrototypeOf(reality[0]).learnRequest(
 // todos los meeseeks menos uno dejan de existir
 // selecciono todos los elementos del array menos el primero
 // slice(start, end) => slice(0, -1) => desde el primero hasta el ultimo sin incluir
-for(let i = 0; i < reality.slice(0,-1).length; i++) {
-    reality[i].fulfillRequest();
-}
-
-let limite = reality.length;
-for(let i = 1; i < limite; i++) {
+let meseeksNum = reality.slice(0,-1).length;
+for(let i = 0; i < meseeksNum; i++) {
     // el primer meeseeks creado por jerry es el que primero explota
-    // for/in no devuelve el array en el orden en el que fue creado:
-    reality.shift();
+    // for/in no devuelve el array en el orden en el que fue creado
+    reality.shift().fulfillRequest();
 }
-
 console.assert(reality.length == 1);
 
 
