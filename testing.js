@@ -1,4 +1,8 @@
 
+/**
+ * https://www.youtube.com/watch?v=qUYvIAP3qQk
+ */
+
 // node.js modules
 var importaBox = require('./box');
 
@@ -20,31 +24,40 @@ console.log(box.name);
 // los Meeseeks son distintos
 // el prototipo no cambia
 var mrMeeseeks = box.createMrMeeseeks();
-// console.log(mrMeeseeks.speak());
 
 var mrMeeseeks2 = box.createMrMeeseeks();
-mrMeeseeks2.message = "el segundo";
-// console.log(mrMeeseeks.speak());
+mrMeeseeks2.messageOnCreate = "Caaaan dooooo!!";
+
 console.assert(mrMeeseeks !== mrMeeseeks2);
-console.assert(mrMeeseeks.message != mrMeeseeks2.message);
+console.assert(mrMeeseeks.messageOnCreate != mrMeeseeks2.messageOnCreate);
 
 var proto = box.getProtoMeeseks();
 console.assert(proto.messageOnCreate == "I'm Mr Meeseeks! Look at meeee!");
+console.assert(proto != mrMeeseeks);
 
 // creamos Mr Meeseeks con la caja
+// Los meeseeks se añaden a un array 
+// para practicar este tipo de estructura
 var reality = [];
+
+// Historia de usuario: Jerry press button
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
+
 console.log("Rick: Open Jerry's stupid mayonnaise jar");
 var lastMrMeeseeks = reality.length - 1;
 reality[lastMrMeeseeks].makeRequest("open", "Jerry's stupid mayonnaise jar");
 reality[lastMrMeeseeks].fulfillRequest();
+// meeseeks deja de existir
 reality.pop();
 console.assert(reality.length == 0);
 
-// si cambiamos el mensaje al crearse del prototipo, cambian todos los meeseeks
+// si cambiamos el "mensaje al crearse" del prototipo, 
+// cambia el de todos los meeseeks
 proto.messageOnCreate = "Caaaaaan dooooooo!!";
+
+// // Historia de usuario: Summer press button
 
 box.pressButton(reality);
 console.assert(reality.length == 1);
@@ -54,6 +67,7 @@ reality[lastMrMeeseeks].fulfillRequest();
 reality.pop();
 console.assert(reality.length == 0);
 
+// // Historia de usuario: Beth press button
 
 box.pressButton(reality);
 console.log("Beth: I wanna be a more complete woman!");
