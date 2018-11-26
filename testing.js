@@ -84,13 +84,25 @@ console.assert(reality.length == 0);
 // el prototipo no se ha visto alterado con accion
 // proto.fulfillRequest();  => accion no definido
 
+// // Historia de usuario: Jerry y su Mr Meeseeks press button
+console.log("\n ### Jerry and Mr Meeseeks press button ### \n");
+
+box.pressButton(reality);
+console.log("Jerry: I would like to take two strokes off my golf game.");
+reality[lastMrMeeseeks].makeRequest("take two strokes off", "my golf game");
+
+// aprendiendo draw
+
+
+// aprendiendo short game
+
+reality[lastMrMeeseeks].learnRequest();
+reality[lastMrMeeseeks].fulfillRequest();
+reality.pop();
+console.assert(reality.length == 0);
+
+
 /*
 for(let mrMee in reality) {
     reality[mrMee].speak();
 }*/
-
-
-
-
-
-
