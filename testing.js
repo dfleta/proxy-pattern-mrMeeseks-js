@@ -97,18 +97,24 @@ reality[lastMrMeeseeks].makeRequest("take two strokes off", "my golf game");
 Object.getPrototypeOf(reality[lastMrMeeseeks]).messageOnCreate = "Hi!!";
 
 // Mr Meeseeks creando meeseeks
+
 let meeseeksNum = 3;
+// el hoisting de funciones funciona con la declaracion de funciones
+createBunchOfMeeseeks(meeseeksNum, reality, box);
+
+
+/*
 for(let i = 1; i <= meeseeksNum; i++) {
     box.pressButton(reality);
     console.log("Mr Meeseeks: Could you help me get two strokes off Jerry's golf swim?");
+    
     // si añadimos accion() con makeRequest, la creamos de manera local en el objeto
     // asi que aunque añadamos accion() mediante learnRequest en el prototipo
     // JS encontrara accion() de make en el espacio de nombres local
     // y no la accion() creada en el prototipo (precedencia resolucion nombres)
 
     // reality[i].makeRequest("take two strokes off", "my golf game");
-}
-
+}*/
 console.assert(reality.length == meeseeksNum + 1);
 
 // aprendiendo draw
@@ -136,6 +142,7 @@ let meseeksToExplode = reality.slice(0,-1).length;
 for(let i = 0; i < meseeksToExplode; i++) {
     // el primer meeseeks creado por jerry es el que primero explota
     // for/in no devuelve el array en el orden en el que fue creado
+    // for/in necesitaria chequear si la propiedad es hasOwnProperty de reality
     reality.shift().fulfillRequest();
 }
 console.assert(reality.length == 1);
@@ -160,8 +167,18 @@ reality[0].learnRequest(function putt(objeto) {
                         cazo);
 
 reality[lastMrMeeseeks].fulfillRequest();
-
 reality.pop();
 console.assert(reality.length == 0);
 
 
+/**
+ * crear un buen puñado de meeseeks
+ */ 
+
+ // el hoisting de funciones funciona con la declaracion de funciones
+function createBunchOfMeeseeks(meeseeksNum, reality, box) {
+    for(let i = 1; i <= meeseeksNum; i++) {
+        box.pressButton(reality);
+        console.log("Mr Meeseeks: Could you help me get two strokes off Jerry's golf swim?");
+    }
+}
