@@ -1,4 +1,3 @@
-
 /**
  * Las historias de usuario a programar
  * se encuentran aqui:
@@ -6,6 +5,7 @@
  */
 
 // node.js modules
+// importamos el singleton de la clase Box
 var importaBox = require('./box');
 
 // creamos dos cajas: es la misma por singleton
