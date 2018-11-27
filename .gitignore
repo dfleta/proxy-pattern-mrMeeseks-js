@@ -90,4 +90,5 @@ lerna-debug.log
 # System Files
 .DS_Store
 Thumbs.db
-sounds/zapsplat_foley_bottles_glass_milk_empty_knock_over_24356.mp3
+sounds
+images
