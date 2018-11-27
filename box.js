@@ -52,9 +52,3 @@ function singleBox() {
 exports.singletonBox = function() {
     return singleBox();
 };
-
-
-
-
-
-

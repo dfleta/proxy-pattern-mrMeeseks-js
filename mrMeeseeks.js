@@ -6,7 +6,7 @@
  * https://www.youtube.com/watch?v=qUYvIAP3qQk
  */
 
- 
+
 function MrMeeseeks() {
     this.messageOnCreate = "I'm Mr Meeseeks! Look at meeee!";
     this.messageOnRequest = ["Oooh yeah! Can do!", 
