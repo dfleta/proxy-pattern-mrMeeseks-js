@@ -92,3 +92,6 @@ lerna-debug.log
 Thumbs.db
 sounds
 images
+
+# linter config
+.jshintrc
