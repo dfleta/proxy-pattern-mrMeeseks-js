@@ -91,7 +91,6 @@ lerna-debug.log
 .DS_Store
 Thumbs.db
 sounds
-images
 
 # linter config
 .jshintrc
