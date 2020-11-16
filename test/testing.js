@@ -6,10 +6,10 @@
 
 // node.js modules
 // importamos el singleton de la clase Box
-var importaBox = require('./box');
+var importaBox = require('../src/box');
 
 // creamos dos cajas: es la misma por singleton
-var factoriaBox = importaBox.singletonBox();
+var factoriaBox = importaBox.singletonBox;
 var box = factoriaBox.getBox();
 console.log(box.name);
 
@@ -33,6 +33,8 @@ mrMeeseeks2.messageOnCreate = "Caaaan dooooo!!";
 console.assert(mrMeeseeks !== mrMeeseeks2);
 console.assert(mrMeeseeks.messageOnCreate != mrMeeseeks2.messageOnCreate);
 
+// obtengo el meeseeks proto y compruebo que su mensaje
+// onCreate no ha cambiado: shadowing de la variable messageOnCreate
 var proto = box.getProtoMeeseks();
 console.assert(proto.messageOnCreate == "I'm Mr Meeseeks! Look at meeee!");
 console.assert(proto != mrMeeseeks);
@@ -156,13 +158,13 @@ console.assert(reality.length == 0);
 
 
 /**
- * crear un buen atajo de meeseeks
+ * crear un buen hatajo de meeseeks
  */ 
 
  // el hoisting de funciones funciona con la declaracion de funciones
-function createBunchOfMeeseeks(meeseeksNum, reality, box) {
-    for(let i = 1; i <= meeseeksNum; i++) {
-        box.pressButton(reality);
+function createBunchOfMeeseeks(numMeeseeks, existence, rickBox) {
+    for(let i = 1; i <= numMeeseeks; i++) {
+        rickBox.pressButton(existence);
         console.log("Mr Meeseeks: Could you help me get two strokes off Jerry's golf swim?");
 
         // si añadimos accion() con makeRequest, la creamos de manera local en el objeto
@@ -179,11 +181,11 @@ function createBunchOfMeeseeks(meeseeksNum, reality, box) {
  * Explotar meeseeks a puñaos
  */
 
-function explodeMrMeeseeks(nuMmeseeksToExplode, reality) {
-    for(let i = 0; i < nuMmeseeksToExplode; i++) {
+function explodeMrMeeseeks(numMeseeksToBlowOut, existence) {
+    for(let i = 0; i < numMeseeksToBlowOut; i++) {
         // el primer meeseeks creado por jerry es el que primero explota
         // for/in no devuelve el array en el orden en el que fue creado
         // for/in necesitaria chequear si la propiedad es hasOwnProperty de reality
-        reality.shift().fulfillRequest();
+        existence.shift().fulfillRequest();
     }    
 }

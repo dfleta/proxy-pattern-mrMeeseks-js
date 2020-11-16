@@ -17,7 +17,9 @@ Box.prototype.createMrMeeseeks = function() {
     if (! this.mrMeeseeks) {
         this.mrMeeseeks = singletonMrMeeseeks.singleMrMeeseeks().get();
     }
-    return Object.create(this.mrMeeseeks);
+    // variable solo para propositos educativos de debugging: observar __proto__
+    let meeseeksClon = Object.create(this.mrMeeseeks);
+    return meeseeksClon;
 };
 
 Box.prototype.pressButton = function(reality) {
@@ -26,12 +28,16 @@ Box.prototype.pressButton = function(reality) {
     reality.push(mrMee);
 };
 
+// rompo encapsulación del closure sólo por motivos
+// educativo de debugging
 Box.prototype.getProtoMeeseks = function() {
     return this.mrMeeseeks;
 };
 
 // singleton de Box
-function singleBox() {
+// Es un objeto, no una función => no puede ejecutarse como factory()
+// singleBox() devuelve unn objeto {getBox: getBox()}
+var factory = (function singleBox() {
     
     const boxInstance = new Box();
 
@@ -40,7 +46,17 @@ function singleBox() {
             return boxInstance;
         }
     };
-}
+    /*
+    Este pasa el segundo caso test
+    this.boxInstance = new Box();
+
+    this.getBox = function getBox() {
+        return this.boxInstance;
+    }
+
+    return getBox();
+    */
+})();  //IIFE
 
 
 /**
@@ -49,6 +65,9 @@ function singleBox() {
  */
 
 // node.js modules
+exports.singletonBox = factory;
+/*
 exports.singletonBox = function() {
     return singleBox();
 };
+*/
