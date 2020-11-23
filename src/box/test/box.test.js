@@ -1,7 +1,6 @@
 
 const { expect } = require('@jest/globals');
-// box configurado como paquete
-const factory = require('../src/box');
+const factory = require('../box');
 
 test('creo la caja usando su factoria', () => {
     expect(factory.singletonBox.getBox().name).toBe("Rick's box");

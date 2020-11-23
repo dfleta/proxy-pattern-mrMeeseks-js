@@ -6,6 +6,8 @@
 
 // node.js modules
 // importamos el singleton de la clase Box
+// Si box es un paquete, es suficiente con 
+// require del directorio que la contiene 
 var importaBox = require('./box');
 
 // creamos dos cajas: es la misma por singleton

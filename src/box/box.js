@@ -5,7 +5,9 @@
 
 // node.js modules
 // importamos el singleton de la clase MrMeeseeks
-var singletonMrMeeseeks = require('./mrMeeseeks');
+// Si el modulo esta configurado como paquete
+// es suficiente con indicar la ruta al directorio
+var singletonMrMeeseeks = require('../mrmeeseeks');
 
 
 function Box() {
