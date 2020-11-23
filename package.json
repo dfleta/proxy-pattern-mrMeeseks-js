@@ -1,5 +1,35 @@
 {
-    "scripts": {
+  "name": "ricks-box",
+  "version": "1.0.0",
+  "description": "Rick and Morty episode MrMeeseeks box",
+  "main": "main.js",
+  "scripts": {
       "test": "jest"
-    }
-  }
+    },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "jest": "^26.6.3"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfleta/proxy-pattern-mrMeeseks-js.git"
+  },
+  "keywords": [
+    "js",
+    "proxy-pattern",
+    "patron-modulo",
+    "closure",
+    "prototipado",
+    "herencia-prototipica",
+    "patron-delegacion"
+  ],
+  "author": "David Gelpi gelpiorama@gmail.com https://github.com/dfleta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dfleta/proxy-pattern-mrMeeseks-js/issues"
+  },
+  "homepage": "https://github.com/dfleta/proxy-pattern-mrMeeseks-js#readme"
+}
