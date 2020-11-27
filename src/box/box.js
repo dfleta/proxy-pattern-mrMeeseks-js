@@ -17,7 +17,7 @@ function Box() {
 
 Box.prototype.createMrMeeseeks = function() {
     if (! this.mrMeeseeks) {
-        this.mrMeeseeks = singletonMrMeeseeks.singleMrMeeseeks().get();
+        this.mrMeeseeks = singletonMrMeeseeks.singleMrMeeseeks.get();
     }
     // variable solo para propositos educativos de debugging: observar __proto__
     let meeseeksClon = Object.create(this.mrMeeseeks);
@@ -48,18 +48,11 @@ var factory = (function singleBox() {
             return boxInstance;
         }
     };
-    /*
-    Este pasa el segundo caso test
-    this.boxInstance = new Box();
-
-    this.getBox = function getBox() {
-        return this.boxInstance;
-    }
-
-    return getBox();
-    */
-})();  //IIFE
-
+})(); 
+// IIFE para provocar la ejecucion de singleBox()
+// sobre el closure boxInstance
+// y fijar para siempre jamás el valor de boxInstance
+// a esa primera instancia.
 
 /**
  * Testing e importacion del singleton
@@ -68,8 +61,3 @@ var factory = (function singleBox() {
 
 // node.js modules
 exports.singletonBox = factory;
-/*
-exports.singletonBox = function() {
-    return singleBox();
-};
-*/

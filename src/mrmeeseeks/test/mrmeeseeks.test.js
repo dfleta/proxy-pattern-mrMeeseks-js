@@ -4,17 +4,14 @@ const { expect } = require('@jest/globals');
 const factory = require('../mrmeeseeks');
 
 test('Creo un meeseeks usando su factoria', () => {
-    expect(factory.singleMrMeeseeks().get()).toBeTruthy;
+    expect(factory.singleMrMeeseeks.get()).toBeTruthy;
   });
 
-test('Los meeseeks creados son distintos y el prototipo no cambia', () => {
-    let meeseeks_primer = factory.singleMrMeeseeks().get();
-    let meeseeks_post = factory.singleMrMeeseeks().get();
+test('Los meeseeks creados son el mismo (singleton)', () => {
+    let meeseeks_primer = factory.singleMrMeeseeks.get();
+    let meeseeks_post = factory.singleMrMeeseeks.get();
 
-    expect(meeseeks_post !== meeseeks_primer).toBe(true);
-
-    meeseeks_primer.messageOnCreate = "uep com anam!";
-    expect(meeseeks_post.messageOnCreate).not.toBe("uep com anam!");
+    expect(meeseeks_post === meeseeks_primer).toBe(true);
 });
 
 
@@ -34,14 +31,17 @@ describe('scoping de beforeEach', () => {
 
     beforeEach( () => {
         // inicialización de la variable local antes de cada caso test
-        meeseeks = factory.singleMrMeeseeks().get();
+        // de poco sirve porque el closure ya se ha ejecutado
+        meeseeks = factory.singleMrMeeseeks.get();
 
         // MOCK FUNCTION
 
-        // Creo una funcion mock para emular el comportamiento de 
-        // box.pressButton() que crea clones de meeseeks a partir
-        // de su prototype con Object.create().
-        // Así eliminamos la dependencia a box en los test. 
+        /** 
+         * Creo una funcion mock para emular el comportamiento de 
+         * box.pressButton() que crea clones de meeseeks a partir
+         * de su prototype con Object.create().
+         * Así eliminamos la dependencia a box en los test. 
+         */
 
         const boxMock = jest
                   .fn()
@@ -49,7 +49,6 @@ describe('scoping de beforeEach', () => {
                   .mockName('boxMock');
 
         box.pressButton = boxMock;
-
     })
 
     // TESTS
@@ -138,7 +137,4 @@ describe('scoping de beforeEach', () => {
         // la propiedad messageOnCreate pertenece al prototipo, no a clon:
         expect(clon.hasOwnProperty('messageOnCreate')).toBeFalsy();
     })
-
-
-
 });

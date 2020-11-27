@@ -4,24 +4,24 @@ const { expect } = require('@jest/globals');
 // box configurado como paquete
 const factory = require('../box');
 
-test('creo la caja usando su factoria', () => {
+test('Creo la caja usando su factoria', () => {
     expect(factory.singletonBox.getBox().name).toBe("Rick's box");
   });
 
-test('factoria devuelve siempre la misma caja', () => {
+test('Factoria devuelve siempre la misma caja (singleton)', () => {
     let box_primer = factory.singletonBox.getBox();
     let box_post = factory.singletonBox.getBox();
     expect(box_primer === box_post).toBe(true);
-      
+    
+    // TO_BE_INSTANCE_OF
+
     function Box() {
         this.name = "Rick's box";
         this.mrMeeseeks = null;
     }
     let box_mocked = new Box();
+    expect(box_primer).not.toBeInstanceOf(Box);
     expect(box_primer === box_mocked).toBe(false);
-
-    box_post.name = "Jen's box";
-    expect(box_primer.name).toBe("Jen's box");
   });
 
 
@@ -33,7 +33,14 @@ test('factoria devuelve siempre la misma caja', () => {
 
 describe('scoping de beforeEach', () => {
 
-    let box = factory.singletonBox.getBox();
+    let box = null;
+
+    // SETUP
+
+    beforeEach( () => {
+        // de poco sirve porque el closure ya se ha ejecutado
+        box = factory.singletonBox.getBox();
+    } );
 
     test('shadowing de variable messageOnCreate', () => {
 

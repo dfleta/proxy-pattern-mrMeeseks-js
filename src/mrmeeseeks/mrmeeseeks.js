@@ -54,7 +54,7 @@ MrMeeseeks.prototype.learnRequest = function(deseo, objeto) {
 
 
 // singleton de MrMeeseeks
-function singletonMrMeeseeks() {
+var factory = (function singletonMrMeeseeks() {
 
     const prototipo = new MrMeeseeks();
 
@@ -63,7 +63,11 @@ function singletonMrMeeseeks() {
             return prototipo;
         }
     };
-}
+})();
+// IIFE para provocar la ejecucion de singletonMrMeeseeks()
+// sobre el closure prototipo
+// y fijar para siempre jamás el valor de bprototipo
+// a esa primera instancia.
 
 
 /**
@@ -72,6 +76,4 @@ function singletonMrMeeseeks() {
  */
 
 // node.js modules
-exports.singleMrMeeseeks = function() {
-    return singletonMrMeeseeks();
-};
+exports.singleMrMeeseeks = factory;
