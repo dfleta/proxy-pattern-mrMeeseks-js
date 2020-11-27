@@ -19,7 +19,10 @@ MrMeeseeks.prototype.speakOnCreate = function() {
 };
 
 MrMeeseeks.prototype.speakOnRequest = function() {
-    console.log(this.messageOnRequest[Math.floor(Math.random() * this.messageOnRequest.length)]);
+    let message = this.messageOnRequest[Math.floor(Math.random() * this.messageOnRequest.length)]
+    console.log(message);
+    // testing
+    return message;
 };
 
 MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
@@ -39,9 +42,13 @@ MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
 // fulfillRequest recupera las variables deseo y objeto
 MrMeeseeks.prototype.fulfillRequest = function() {
     console.log(this.accion() + " All done!!");
+    // testing
+    return this.accion() + " All done!!";
 };
 
 MrMeeseeks.prototype.learnRequest = function(deseo, objeto) {
+    // deseo es una funcion con un closure
+    // sobre objeto 
     this.accion = deseo(objeto);
 };
 

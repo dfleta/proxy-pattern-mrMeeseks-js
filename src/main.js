@@ -114,19 +114,18 @@ console.assert(reality.length == meeseeksNum + 1);
 var olla = {};
 
 Object.getPrototypeOf(reality[0]).learnRequest(
-                                    function draw(objeto) {
-                                        function execute() {
-                                                objeto["tomato"] = "";
-                                                return "tomato" in objeto? 
-                                                            "That's a lower handycap stroke!!" :
-                                                            "I wanna die!!!";
-                                        }
-                                        // la ejecucion de la accion se aplaza hasta que sea invocada
-                                        return execute;
-                                    },        
-                                    olla);
+        function draw(objeto) {
+            function execute() {
+                objeto["tomato"] = "";
+                return "tomato" in objeto ? 
+                    "That's a lower handycap stroke!!" : "I wanna die!!!";
+            }
+            // la ejecucion de la accion se aplaza hasta que sea invocada
+            return execute;
+        },        
+        olla);
 
-// todos los meeseeks menos uno dejan de existir
+// Todos los meeseeks menos uno dejan de existir
 // selecciono todos los elementos del array menos el primero
 // slice(start, end) => slice(0, -1) => desde el primero hasta el ultimo sin incluir
 let nuMmeseeksToExplode = reality.slice(0,-1).length;

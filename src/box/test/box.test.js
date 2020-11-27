@@ -1,5 +1,7 @@
 
 const { expect } = require('@jest/globals');
+
+// box configurado como paquete
 const factory = require('../box');
 
 test('creo la caja usando su factoria', () => {
@@ -22,11 +24,58 @@ test('factoria devuelve siempre la misma caja', () => {
     expect(box_primer.name).toBe("Jen's box");
   });
 
-/*
- * creamos dos Meeseeks
- * los Meeseeks son distintos
- * el prototipo no cambia
- * */
 
+/**
+ * SCOPING
+ * 
+ * SETUP y TEARDOWN
+ */ 
 
+describe('scoping de beforeEach', () => {
 
+    let box = factory.singletonBox.getBox();
+
+    test('shadowing de variable messageOnCreate', () => {
+
+      // OBJECT TO_HAVE_PROPERTY
+
+      let meeseeks = box.createMrMeeseeks();
+      expect(meeseeks).toHaveProperty('messageOnCreate');
+      // messageOnCreate existe en el prototype de meeseeks
+      // no en el objeto actual
+      expect(meeseeks.hasOwnProperty('messageOnCreate')).toBeFalsy();
+
+      // shadowing de variable: ahora existe en meeseeks
+      meeseeks.messageOnCreate = "Caaaan dooooo!!";
+      expect(meeseeks.hasOwnProperty('messageOnCreate')).toBeTruthy();
+
+      // EXPECT.STRING_MATCHING
+
+      // obtengo el meeseeks proto y compruebo que su mensaje
+      // onCreate no ha cambiado: shadowing de la variable messageOnCreate
+      let proto = box.getProtoMeeseks();
+      expect(proto).toHaveProperty('messageOnCreate');
+      expect(proto.messageOnCreate).toEqual(expect.stringMatching("I'm Mr Meeseeks! Look at meeee!"));
+    });
+
+    test('Presionando boton de la caja se añade meeseeks a la realidad', () => {
+
+        let reality = [];
+        box.pressButton(reality);
+
+        // ARRAYS TO_HAVE_LENGHT
+
+        // un meeseeks ha comenzado a existir
+        expect(reality).toHaveLength(1);
+
+        // OBJECT TO_HAVE_PROPERTY
+
+        // el nuevo objeto no es nulo y es un meeseek
+        expect(reality[0]).toHaveProperty('messageOnCreate', "I'm Mr Meeseeks! Look at meeee!");
+          
+        let meeseeks = box.getProtoMeeseks();
+        expect(reality[0]).toEqual(expect.objectContaining(meeseeks));
+        // toBeInstanceOf no puedo utilizarlo porque no tengo acceso
+        // a la funcion constructora MrMeeseeks
+    })
+})
