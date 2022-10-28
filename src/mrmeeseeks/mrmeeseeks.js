@@ -32,13 +32,13 @@ MrMeeseeks.prototype.makeRequest = function(deseo, objeto) {
         }
         return execute;
     };
-    // creamos propiedad action al vuelo en el objeto MrMeeseeks
+    // creamos propiedad accion al vuelo en el objeto MrMeeseeks
     // accion = execute con el closure sobre deseo
     this.accion = closure(objeto);
     this.speakOnRequest();
 };
 
-// Una vez creado el closure acction sobre deseo
+// Una vez creado el closure accion sobre deseo
 // fulfillRequest recupera las variables deseo y objeto
 MrMeeseeks.prototype.fulfillRequest = function() {
     console.log(this.accion() + " All done!!");
@@ -66,7 +66,7 @@ var factory = (function singletonMrMeeseeks() {
 })();
 // IIFE para provocar la ejecucion de singletonMrMeeseeks()
 // sobre el closure prototipo
-// y fijar para siempre jamás el valor de bprototipo
+// y fijar para siempre jamás el valor del prototipo
 // a esa primera instancia.
 
 
