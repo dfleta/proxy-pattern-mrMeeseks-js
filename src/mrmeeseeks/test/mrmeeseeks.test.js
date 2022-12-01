@@ -111,20 +111,33 @@ describe('scoping de beforeEach', () => {
 
         // inyecto en el objeto la funcion mock
         meeseeks.accion = accionMock;
-        expect(meeseeks).toHaveProperty('accion');
+        expect(meeseeks).toHaveProperty('accion'); // primera invocacion de la funcion accionMock
         
-        // el objeto meeseeks invoca a la funcion mock
+        // el objeto meeseeks invoca a la funcion mock == segunda invocacion de la función mock
         expect(meeseeks.fulfillRequest()).toEqual(expect.stringMatching("open" + " " + "Jerry's head" + " All done!!"))
 
         // accionMock ha debido ser llamada desde fulfillRequest()
         expect(accionMock).toHaveBeenCalled();
+        // La funcion ha sido llamada exactamente dos veces: toHaveProperty + fullfillRequest
+        expect(accionMock.mock.calls.length).toBe(2);
+        // El valor devuelto en la segunda llamada a la funcion ha sido "open Jerry's head"
+        expect(accionMock.mock.results[1].value).toBe("open Jerry's head");
+        // La funcion ha sido llamada con un cierto contexto `this`: el objeto `meeseeks`
+        expect(accionMock.mock.contexts[0]).toBe(meeseeks);
+        // Ek primer argumento de la ultima llamada a la funcion ha sido 'undefined', accion()
+        expect(accionMock.mock.lastCall[0]).toBe(undefined);
     });
 
     test('Cambiar messageOnCreate del prototipo meeseeks', () => {
 
         // mrmeeseeks tendra como prototipo a meeseeks 
-        // por Object.create() en pressButton()
+        // por Object.create() en pressButton().
+        // box variable local de este test scope con la funcion
+        // pressButton mockeada antes de cada caso test 
+        // mediante beforeEach()
         let clon = box.pressButton();
+
+        expect(Object.getPrototypeOf(clon).messageOnCreate).toEqual(expect.stringMatching("I'm Mr Meeseeks! Look at meeee!"))
         
         Object.getPrototypeOf(clon).messageOnCreate = "Hi!!";
 

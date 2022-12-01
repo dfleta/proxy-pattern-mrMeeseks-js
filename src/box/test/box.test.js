@@ -79,6 +79,14 @@ describe('scoping de beforeEach', () => {
 
         // el nuevo objeto no es nulo y es un meeseek
         expect(reality[0]).toHaveProperty('messageOnCreate', "I'm Mr Meeseeks! Look at meeee!");
+
+        // toEqual no asciende por la cadena de prototipos buscando las propiedades del objeto
+        // toEqual recursively checks every field of an object or array.
+        console.log(reality[0]); // MrMeeseeks {}
+        expect(reality[0]).not.toEqual( 
+            { messageOnCreate: "I'm Mr Meeseeks! Look at meeee!", 
+              messageOnRequest: ["Oooh yeah! Can do!", "Yes sireee!", "Oh, yeah!, Yes, ma'am!"]
+            })
           
         let meeseeks = box.getProtoMeeseks();
         expect(reality[0]).toEqual(expect.objectContaining(meeseeks));
